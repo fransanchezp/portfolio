@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 
 const projects = [
   {
@@ -7,8 +7,7 @@ const projects = [
     description: "A beautiful restaurant website with modern design and responsive layout.",
     image: "/projects/portadarestaurante.png",
     tags: ["HTML", "CSS", "JavaScript"],
-    demoUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/fransanchezp/restaurant-website",
   },
   {
     id: 2,
@@ -16,8 +15,7 @@ const projects = [
     description: "A stunning travel website featuring destination guides, booking systems, and travel inspiration with modern UI design.",
     image: "/projects/portadaviajes.png",
     tags: ["HTML", "CSS", "JavaScript"],
-    demoUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/fransanchezp/egypt-travel-website",
   },
 ];
 
@@ -61,6 +59,19 @@ export const ProjectsSection = () => {
                 <p className="text-muted-foreground text-sm mb-4">
                   {project.description}
                 </p>
+                
+                {/* Botón de GitHub */}
+                <div className="flex justify-end items-center">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                    title="View on GitHub"
+                  >
+                    <Github size={20} />
+                  </a>
+                </div>
               </div>
             </div>
           ))}
