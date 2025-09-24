@@ -47,7 +47,10 @@ export const Navbar = () => {
           isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
         )}
       >
-        <div className="container flex items-center justify-end">
+        <div className="container flex items-center justify-between md:justify-end">
+          {/* Espaciador invisible en desktop para balance */}
+          <div className="hidden md:block"></div>
+          
           {/* desktop nav */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item, key) => (
@@ -61,14 +64,17 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* mobile nav button - alineado a la derecha con margen del theme toggle */}
+          {/* mobile nav button - centrado */}
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="md:hidden p-2 text-foreground z-50 mr-12"
+            className="md:hidden p-2 text-foreground z-50 mx-auto"
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+
+          {/* Espaciador para el theme toggle en móvil */}
+          <div className="md:hidden w-12"></div>
 
           <div
             className={cn(
@@ -79,7 +85,7 @@ export const Navbar = () => {
                 : "opacity-0 pointer-events-none"
             )}
           >
-            <div className="flex flex-col space-y-8 text-xl">
+            <div className="flex flex-col space-y-8 text-xl text-center">
               {navItems.map((item, key) => (
                 <a
                   key={key}
