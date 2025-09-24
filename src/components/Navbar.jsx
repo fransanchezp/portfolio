@@ -25,21 +25,6 @@ export const Navbar = () => {
 
   return (
     <>
-      {/* Logo fijo - ajustado para pantallas pequeñas */}
-      <div className="fixed top-3 left-3 sm:top-5 sm:left-5 z-50">
-        <a
-          className="text-sm sm:text-xl font-bold text-primary flex items-center"
-          href="#hero"
-        >
-          <span className="relative z-10">
-            {/* Logo más corto en móviles pequeños */}
-            <span className="text-glow text-foreground block sm:hidden">Fran P.</span>
-            <span className="text-glow text-foreground hidden sm:block">Fran Praena </span>
-            <span className="hidden sm:inline"> Portfolio</span>
-          </span>
-        </a>
-      </div>
-
       {/* Navbar principal */}
       <nav
         className={cn(
@@ -47,12 +32,23 @@ export const Navbar = () => {
           isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
         )}
       >
-        <div className="container flex items-center justify-between md:justify-end">
-          {/* Espaciador invisible en desktop para balance */}
-          <div className="hidden md:block"></div>
-          
-          {/* desktop nav */}
-          <div className="hidden md:flex space-x-8">
+        <div className="container flex items-center justify-between">
+          {/* Logo - alineado a la izquierda */}
+          <div className="flex items-center">
+            <a
+              className="text-sm sm:text-xl font-bold text-primary flex items-center"
+              href="#hero"
+            >
+              <span className="relative z-10">
+                <span className="text-glow text-foreground block sm:hidden">Fran P.</span>
+                <span className="text-glow text-foreground hidden sm:block">Fran Praena </span>
+                <span className="hidden sm:inline"> Portfolio</span>
+              </span>
+            </a>
+          </div>
+
+          {/* Desktop nav - centrado */}
+          <div className="hidden md:flex space-x-8 absolute left-1/2 transform -translate-x-1/2">
             {navItems.map((item, key) => (
               <a
                 key={key}
@@ -64,17 +60,17 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* mobile nav button - centrado */}
+          {/* Mobile nav button - centrado en móvil */}
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="md:hidden p-2 text-foreground z-50 mx-auto"
+            className="md:hidden p-2 text-foreground z-50 absolute left-1/2 transform -translate-x-1/2"
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          {/* Espaciador para el theme toggle en móvil */}
-          <div className="md:hidden w-12"></div>
+          {/* Espaciador para balance - donde estaría el theme toggle */}
+          <div className="w-10 h-10"></div>
 
           <div
             className={cn(
