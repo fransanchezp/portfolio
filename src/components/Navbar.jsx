@@ -25,15 +25,17 @@ export const Navbar = () => {
 
   return (
     <>
-      {/* Logo fijo */}
-      <div className="fixed top-5 left-5 z-50">
+      {/* Logo fijo - ajustado para pantallas pequeñas */}
+      <div className="fixed top-3 left-3 sm:top-5 sm:left-5 z-50">
         <a
-          className="text-xl font-bold text-primary flex items-center"
+          className="text-sm sm:text-xl font-bold text-primary flex items-center"
           href="#hero"
         >
           <span className="relative z-10">
-            <span className="text-glow text-foreground"> Fran Praena </span>{" "}
-            Portfolio
+            {/* Logo más corto en móviles pequeños */}
+            <span className="text-glow text-foreground block sm:hidden">Fran P.</span>
+            <span className="text-glow text-foreground hidden sm:block">Fran Praena </span>
+            <span className="hidden sm:inline"> Portfolio</span>
           </span>
         </a>
       </div>
@@ -45,7 +47,7 @@ export const Navbar = () => {
           isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
         )}
       >
-        <div className="container flex items-center justify-between md:justify-end">
+        <div className="container flex items-center justify-end">
           {/* desktop nav */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item, key) => (
@@ -59,17 +61,14 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* mobile nav button - centrado en móvil */}
+          {/* mobile nav button - alineado a la derecha con margen del theme toggle */}
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="md:hidden p-2 text-foreground z-50 mx-auto"
+            className="md:hidden p-2 text-foreground z-50 mr-12"
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-
-          {/* Espaciador para balance en móvil */}
-          <div className="md:hidden w-10"></div>
 
           <div
             className={cn(
